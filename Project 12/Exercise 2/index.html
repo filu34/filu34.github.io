@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="text">
+    </form>
+    <ul>
+        <li>brukselka</li>
+        <li>groch</li>
+        <li>batat</li>
+        <li>ziemniak</li>
+        <li>burak</li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        const arr = [34, 219, 109, 2934, 12, 10, 29];
+
+        // Filter.
+        const odd = arr.filter(number => number%2);
+        const even = arr.filter(number => !(number%2));
+        const biggerThan100 = arr.filter(number => number > 100);
+
+        // Map.
+        const double = arr.map(number => number * 2);
+        const people = arr.map(number => number + " osób");
+
+        // ForEach.
+        arr.forEach((number, index) => arr[index] = number * 2);
+    
+    </script>
+</body>
+</html>

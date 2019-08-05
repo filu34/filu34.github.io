@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        button {
+            display: block;
+            margin: 10px auto;
+        }
+        li {font-size: 20px;}
+
+        .big {font-size: 30px;}
+
+    </style>
+</head>
+<body>
+    <button>Utwórz element</button>
+        <ul>Lista:</ul>
+
+    <script>
+        const btn = document.querySelector('button');
+
+        let number = 0;
+
+        const addElement = function() {
+
+
+            const li = document.createElement('li');
+            li.textContent = number;
+            const list = document.querySelector('ul');
+
+            if (number%3 == 0) {
+                li.classList.add('big');
+            }
+            
+            list.appendChild(li);
+            number += 2;
+        }
+
+        btn.addEventListener('click', addElement);
+
+    </script>
+</body>
+</html>

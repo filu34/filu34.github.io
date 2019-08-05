@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&amp;subset=latin-ext" rel="stylesheet">
+    <style>
+        div {
+            font-family: roboto;
+            max-width: 80%;
+            margin: 20px auto;
+            font-size: 60px;
+            letter-spacing: 1px;
+        }
+        .cursor {
+            opacity: 0;
+            transition: .4s;
+        }
+        
+        .cursor.active {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <span class="text"></span><span class="cursor">|</span>
+    </div>
+
+
+    <script>
+        
+        const spanText = document.querySelector(".text");
+        const spanCursor = document.querySelector(".cursor");
+        const text = ["Witaj!", "Powiedz mi co cię tu sprowadza.", "Zaczynaj. :)"]
+
+        // Parametry.
+        let activeLetter = -20;
+        let activeText = 0;
+
+        // Implementacja.
+        const addLetter = () => {
+            if(activeLetter>=0) {
+                spanText.textContent += text[activeText][activeLetter];
+            }
+            
+            activeLetter++;
+            if(activeLetter === text[activeText].length) {
+                activeText++;
+                if(activeText === text.length) return;
+
+                return setTimeout(() => {
+                    activeLetter = -20;
+                    spanText.textContent = "";
+                    addLetter();
+                }, 2000);
+                
+            }
+            setTimeout(addLetter, 100);
+        };
+
+        addLetter(); // Pierwsze wywołanie.
+
+        const cursorAnimation = () => {
+            spanCursor.classList.toggle("active");
+            console.log("Ok");
+        };
+
+        setInterval(cursorAnimation, 400);
+
+    </script>
+</body>
+</html>

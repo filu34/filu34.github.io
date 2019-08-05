@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        li {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button>Start</button>
+    <ul>
+        <li>Element 1</li>
+        <li>Element 2</li>
+        <li>Element 3</li>
+        <li>Element 4</li>
+        <li>Element 5</li>
+        <li>Element 6</li>
+        <li>Element 7</li>
+        <li>Element 8</li>
+        <li>Element 9</li>
+        <li>Element 10</li>
+    </ul>
+
+    <script>
+        /* const btn = document.createElement("button");
+        document.body.appendChild(btn);
+        btn.textContent = "Start"; */
+        
+        const btn = document.querySelector("button");
+        const list = document.querySelectorAll("li");
+
+        let size = 10;
+
+        btn.addEventListener("click", () => {
+
+            size++;
+
+            for (let i = 0; i < list.length; i++) {
+                list[i].style.display = "block";
+                list[i].style.fontSize = `${size}px`;
+            };
+        });
+
+
+    </script>
+</body>
+</html>

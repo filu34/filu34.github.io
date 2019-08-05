@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style></style>
+</head>
+<body>
+    <script>
+        let grow = true;
+
+        let red = 100;
+        let green = 100;
+        let blue = 100;
+
+        let size = 10;
+
+        document.body.style.height = "10000px";
+
+        const strip = document.createElement("div");
+        document.body.appendChild(strip);
+
+        strip.style.position = "fixed";
+        strip.style.top = 0;
+        strip.style.left = 0;
+        strip.style.width = "100%";
+        strip.style.backgroundColor = "green";
+        strip.style.height = size + "px";
+
+
+        window.addEventListener("scroll", () => {
+            
+            if (size > window.innerHeight / 2){
+                grow = !grow;
+            }
+            else if (size <= 0){
+                grow = !grow;
+            }
+
+            if(grow){
+                size += 5;
+                green += 4;
+                blue += 2;
+                red += 3;
+             
+            }
+            else {
+                size -= 5;
+                green -= 4;
+                blue -= 2;
+                red -= 3;          
+            }
+            strip.style.height = size + "px";
+            strip.style.backgroundColor = `rgb(${red}, ${green}, ${blue})` 
+        });
+    </script>
+</body>
+</html>

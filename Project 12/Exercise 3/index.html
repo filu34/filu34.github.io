@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="text">
+    </form>
+    <ul>
+        <li>brukselka</li>
+        <li>groch</li>
+        <li>batat</li>
+        <li>ziemniak</li>
+        <li>burak</li>
+        <li>fasola</li>
+        <li>marchew</li>
+        <li>pietruszka</li>
+        <li>por</li>
+        <li>cebula</li>
+    </ul>
+
+    <script>
+    
+        const input = document.querySelector("input");
+        const ul = document.querySelector("ul");
+        const liElements = document.querySelectorAll("li");
+
+        const searchTask = (e) => {
+            const searchText = e.target.value.toLowerCase();
+            console.log(e.target.value.toLowerCase());
+            let tasks = [... liElements];
+            tasks = tasks.filter(li => li.textContent.toLowerCase().includes(searchText));
+            console.log(tasks);
+            ul.textContent = "";
+            tasks.forEach(li => ul.appendChild(li));
+        };
+
+        input.addEventListener("input", searchTask);
+    
+    </script>
+</body>
+</html>

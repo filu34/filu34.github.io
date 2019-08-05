@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html {
+            font-family: arial;    
+        }
+
+        button {
+            display: block;
+            margin: 20px auto 50px;
+            background-color: #fff;
+            border: 5px solid cadetblue;
+            padding: 20px 50px;
+            font-size: 22px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <button>Losuj imię dziecka!</button>
+    <div></div>
+
+    <script>
+        const btn = document.querySelector("button");
+        const div = document.querySelector("div");
+        
+        const names = ["Adrian", "Łukasz", "Magda", "Anastazy", "Dionizy", "Hyzio", "Dyzio", "Zyzio"];
+
+        const nameGenerator = function() {
+            const indexName = Math.floor(Math.random() * names.length);
+            console.log(names[indexName]);
+        div.textContent = `Najfajniejsze imię to ${names[indexName]}.`
+        };
+
+        btn.addEventListener("click", nameGenerator);
+        
+    </script>
+</body>
+</html>

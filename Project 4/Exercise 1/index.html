@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        body {
+            height: 90vh;
+        }
+        
+        h1 {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+            font-family: arial;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rusz Myszką</h1>
+    <script>
+        const h1 = document.querySelector("h1");
+        document.body.addEventListener("mousemove", (e) => {
+            const x = e.clientX;
+            const y = e.clientY;
+            const w = window.innerWidth;
+            const h = window.innerHeight;
+            
+            h1.textContent = `${x}, ${y}`;
+
+            let red = x / w * 100;
+            let green = y / h * 100;
+            let blue = ((x / w * 100) + (y / h * 100)) / 2; 
+
+            document.body.style.backgroundColor = `rgb(${red},${green}, ${blue})`;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <input type="text">
+        <button>Dodaj zadanie.</button>
+    </form>
+    <h1>Liczba zadań: <span>0</span></h1>
+    <ul>
+
+    </ul>
+    
+    <script>
+        const toDoList = [];
+        
+        const form = document.querySelector("form");
+        const ul = document.querySelector("ul");
+        const taskNumber = document.querySelector("h1 span");
+        const listItems = document.getElementsByClassName("task");
+        const input = document.querySelector("input");
+
+        const removeTask = (e) => {
+            e.target.parentNode.remove();
+            const index = e.target.parentNode.dataset.key;
+            toDoList.splice(index, 1);
+            console.log(toDoList);
+            taskNumber.textContent = listItems.length;
+
+            renderList();
+
+        };
+
+        const addTask = (e) => {
+            e.preventDefault();
+            const titleTask = input.value;
+            console.log(titleTask);
+
+            if(titleTask === "") return;
+            const task = document.createElement("li");
+            task.className = "task";
+            task.innerHTML = titleTask + " <button>Usuń.</button>";
+
+            toDoList.push(task);
+            renderList();
+
+            ul.appendChild(task);
+            input.value = "";
+
+            // const listItems = document.querySelectorAll("li.task").length;
+            taskNumber.textContent = listItems.length;
+
+            task.querySelector("button").addEventListener("click", removeTask);
+        };
+
+        const renderList = () => {
+            ul.textContent = "";
+
+            toDoList.forEach((toDoEelement, key) => {
+                toDoEelement.id = key;
+                ul.appendChild(toDoEelement);
+            });
+        };
+
+        form.addEventListener("submit", addTask);
+    
+    </script>
+</body>
+</html>

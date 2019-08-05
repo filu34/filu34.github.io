@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            cursor: pointer;
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    
+    <script>
+        const div = document.querySelector("div");
+        let divX = 150;
+        let divY = 150;
+        div.style.left = `${divX}px`;
+        div.style.top = `${divY}px`;
+
+        let insertDivX;
+        let insertDivY;
+
+        let drawActive = false;
+
+        div.addEventListener("mousedown", (e) => {
+            div.style.backgroundColor = "gray";
+            drawActive = true;
+
+            insertDivX = e.offsetX;
+            insertDivY = e.offsetY;
+
+            console.log(insertDivX, insertDivY);
+        });
+
+        div.addEventListener("mousemove", (e) => {
+            if(drawActive) {
+
+
+                divX = e.clientX - insertDivX;
+                divY = e.clientY - insertDivY;
+                div.style.left = `${divX}px`;
+                div.style.top = `${divY}px`;
+            }
+        });
+
+        div.addEventListener("mouseup", () => {
+            div.style.backgroundColor = "black";
+            drawActive = false;
+        });
+    
+    </script>
+</body>
+</html>
